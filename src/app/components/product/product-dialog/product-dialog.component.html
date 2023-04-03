@@ -1,0 +1,26 @@
+<mat-card class="example-card">
+  <mat-card-header class="d-flex justify-content-between align-items-center">
+    <mat-card-title>Create New Product</mat-card-title>
+    <button mat-icon-button aria-label="Close" color="basic" (click)="onClose()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-card-header>
+
+  <mat-card-content class="mt-4">
+    <div class="d-flex justify-content-between align-items-center">
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input type="text" matInput name="name" maxlength="50" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Price</mat-label>
+        <input type="text" matInput name="price" maxlength="50" />
+      </mat-form-field>
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions class="d-flex justify-content-end align-items-center">
+    <button mat-raised-button color="primary" class="me-2"><mat-icon>save</mat-icon> Save</button>
+    <button mat-raised-button color="secondary" (click)="onClose()">Cancel</button>
+  </mat-card-actions>
+</mat-card>
