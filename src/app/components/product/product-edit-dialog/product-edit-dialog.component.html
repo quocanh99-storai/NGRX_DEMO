@@ -1,41 +1,44 @@
 <mat-card class="example-card">
   <mat-card-header class="d-flex justify-content-between align-items-center">
-    <mat-card-title>Create New Product</mat-card-title>
+    <mat-card-title>Edit Product</mat-card-title>
     <button mat-icon-button aria-label="Close" color="basic" (click)="onClose()">
       <mat-icon>close</mat-icon>
     </button>
   </mat-card-header>
-  <form [formGroup]="form" [ngClass]="{ actionloading: loading$ | async }">
+  <!-- [ngClass]="{ actionloading: loading$ | async }" -->
+  <form [formGroup]="form">
     <mat-card-content class="mt-4">
       <div class="d-flex justify-content-between align-items-center">
         <mat-form-field appearance="fill">
           <mat-label>Name</mat-label>
-          <input type="text" matInput formControlName="name" maxlength="50" />
-          <mat-error *ngIf="f.name.errors">
+          <input type="text" matInput formControlName="name" maxlength="50"/>
+          <!-- <mat-error *ngIf="f.name.errors">
             <span *ngIf="f.name.errors">
               This field is required
             </span>
-          </mat-error>
+          </mat-error> -->
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Price</mat-label>
-          <input type="text" matInput formControlName="price" maxlength="50" />
-          <mat-error *ngIf="f.price.errors">
+          <input type="text" matInput formControlName="price" maxlength="50"/>
+          <!-- <mat-error *ngIf="f.price.errors">
             <span *ngIf="f.price.errors">
               This field is required
             </span>
-          </mat-error>
+          </mat-error> -->
         </mat-form-field>
       </div>
     </mat-card-content>
 
     <mat-card-actions class="d-flex justify-content-end align-items-center">
-      <button mat-raised-button color="primary" class="me-2" [disabled]="(loading$ | async) ||!form.valid"
+      <!-- [disabled]="(loading$ | async) ||!form.valid" -->
+      <button mat-raised-button color="primary" class="me-2"
         (click)="onSubmit()">
         <mat-icon>save</mat-icon> Save
       </button>
-      <button mat-raised-button color="secondary" [disabled]="loading$ | async" (click)="onClose()">
+      <!-- [disabled]="loading$ | async"  -->
+      <button mat-raised-button color="secondary"(click)="onClose()">
         Cancel
       </button>
     </mat-card-actions>

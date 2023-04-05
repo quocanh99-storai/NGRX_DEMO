@@ -1,30 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Product } from 'src/app/models/product.model';
 import { ProductAddAction, ProductLoadingAction, ProductRemoveAction } from '../../state/product/product.action'
 import * as ProductSelector from 'src/app/state/product/product.selector';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductDialogComponent } from './product-dialog/product-dialog.component';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
-];
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
+import { ProductEditDialogComponent } from './product-edit-dialog/product-edit-dialog.component';
 
 @Component({
   selector: 'app-product',
@@ -33,6 +16,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 
 export class ProductComponent implements OnInit {
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+  // Observable
   product$ = this._store.select(ProductSelector.selectProducts)
   loading$ = this._store.select(ProductSelector.selectLoading)
   loaded$ = this._store.select(ProductSelector.selectLoaded)
@@ -40,15 +26,7 @@ export class ProductComponent implements OnInit {
 
   displayedColumns: string[] = ['position', 'name', 'price', 'actions'];
   dataSource = this.product$;
-  // addProduct() {
-  //   const product: Product = {
-  //     id: 1,
-  //     name: 'product' + 1,
-  //     price: 100
-  //   }
-
-  //   this.store.dispatch(ProductActions.addProduct({ product }))
-  // }
+  resultsLength = 0;
 
   // removeProduct(id: number) {
   //   this.store.dispatch(ProductActions.removeProduct({ id }))
@@ -63,6 +41,7 @@ export class ProductComponent implements OnInit {
     this.getProductsList()
   }
 
+
   // API
   getProductsList() {
     this._store.dispatch(new ProductLoadingAction());
@@ -75,16 +54,23 @@ export class ProductComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      if (result) {
+        this.getProductsList()
+      }
+    });
+  }
+
+  editProduct(product: Product) {
+    const dialogRef = this.dialog.open(ProductEditDialogComponent, {
+      width: '470px',
+      data: product
     });
 
-    // const product: Product = {
-    //   id: Math.random(),
-    //   name: 'Benly' + Math.random(),
-    //   price: 205502
-    // }
-    // this._store.dispatch(new ProductAddAction({ product }))
-    // this.getProductsList()
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.getProductsList()
+      }
+    });
   }
 
   removeProduct(id: number) {

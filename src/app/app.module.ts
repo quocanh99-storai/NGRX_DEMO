@@ -23,8 +23,12 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ProductDialogComponent } from './components/product/product-dialog/product-dialog.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { ProductEditDialogComponent } from './components/product/product-edit-dialog/product-edit-dialog.component';
 
 
 
@@ -35,10 +39,13 @@ import { ProductDialogComponent } from './components/product/product-dialog/prod
     TopNavComponent,
     ProductComponent,
     UsersComponent,
-    ProductDialogComponent
+    ProductDialogComponent,
+    ProductEditDialogComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
     MatTableModule,
@@ -47,8 +54,10 @@ import { ProductDialogComponent } from './components/product/product-dialog/prod
     MatDialogModule,
     MatCardModule,
     MatInputModule,
+    MatPaginatorModule, 
     MatGridListModule,
     MatFormFieldModule,
+    MatProgressSpinnerModule,
     StoreModule.forRoot({}),
     StoreModule.forFeature('products', productsReducer),
     EffectsModule.forRoot([UserEffects, ProductEfftects]),

@@ -12,6 +12,10 @@ export enum ProductActionTypes {
     ADD_PRODUCT_SUCCESS = '[PRODUCTS] Add Product Success',
     ADD_PRODUCT_FAILURE = '[PRODUCTS] Add Product Failure',
 
+    // Updating
+    EDIT_PRODUCT = '[PRODUCTS] Edit Product',
+    EDIT_PRODUCT_SUCCESS = '[PRODUCTS] Edit Product Success',
+
     // Removing
     REMOVE_PRODUCT = '[PRODUCTS] Remove Product',
     REMOVE_PRODUCT_SUCCESS = '[PRODUCTS] Remove Product Success',
@@ -51,6 +55,16 @@ export class ProductAddFailureAction implements Action {
     constructor(public payload: any) { }
 }
 
+// ------------------EDIT-------------------- //
+export class ProductEditAction implements Action {
+    readonly type = ProductActionTypes.EDIT_PRODUCT;
+    constructor(public payload: Product) { }
+}
+
+export class ProductEditSuccessAction implements Action {
+    readonly type = ProductActionTypes.EDIT_PRODUCT_SUCCESS;
+    constructor(public payload: Product) { }
+}
 
 // ------------------REMOVE-------------------- //
 export class ProductRemoveAction implements Action {
@@ -70,6 +84,7 @@ export class ProductRemoveFailureAction implements Action {
 
 
 export type ProductActions =
-    ProductLoadingAction | ProductLoadingSuccessAction | ProductLoadingFailureAction
-    | ProductAddAction | ProductAddSuccessAction | ProductAddFailureAction |
+    ProductLoadingAction | ProductLoadingSuccessAction | ProductLoadingFailureAction |
+    ProductAddAction | ProductAddSuccessAction | ProductAddFailureAction |
+    ProductEditAction | ProductEditSuccessAction |
     ProductRemoveAction | ProductRemoveSuccessAction | ProductRemoveFailureAction

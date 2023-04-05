@@ -16,8 +16,8 @@ export const initialState: ProductState = {
     error: null,
 }
 
-export function productsReducer(state:ProductState = initialState, action: ProductActions) : ProductState {
-    console.log("state , " , state)
+export function productsReducer(state: ProductState = initialState, action: ProductActions): ProductState {
+    console.log("state , ", state)
     switch (action.type) {
         // Loading
         case ProductActionTypes.LOAD_PRODUCTS:
@@ -58,6 +58,19 @@ export function productsReducer(state:ProductState = initialState, action: Produ
                 loading: false,
                 loaded: false,
                 error: action.payload.error
+            }
+
+        // Edit
+        case ProductActionTypes.EDIT_PRODUCT:
+            return {
+                ...state,
+                loading: false,
+            }
+        case ProductActionTypes.EDIT_PRODUCT_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                loaded: false,
             }
 
         // Remove
