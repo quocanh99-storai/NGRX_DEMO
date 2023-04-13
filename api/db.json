@@ -23,34 +23,29 @@
   ],
   "products": [
     {
+      "id": 24,
       "name": "CPU",
-      "price": "8500000",
-      "id": 24
+      "price": "8700000"
     },
     {
-      "name": "case",
-      "price": "120000",
-      "id": 25
+      "id": 26,
+      "name": "vga 2030",
+      "price": "7500000"
     },
     {
-      "name": "vga",
-      "price": "6000000",
-      "id": 26
+      "id": 27,
+      "name": "keyboard dareu",
+      "price": "650000"
     },
     {
-      "name": "keyboard ",
-      "price": "120000",
-      "id": 27
+      "id": 28,
+      "name": "logitech B1570",
+      "price": "190000"
     },
     {
-      "name": "mouse",
-      "price": "50000",
-      "id": 28
-    },
-    {
-      "name": "laptop",
-      "price": "20000000",
-      "id": 29
+      "id": 29,
+      "name": "laptop Dell Inspirse",
+      "price": "20000000"
     },
     {
       "name": "SamSung screen",
@@ -58,19 +53,39 @@
       "id": 30
     },
     {
-      "name": "ram grx",
-      "price": "200000",
-      "id": 32
+      "name": "test",
+      "price": "123456",
+      "id": 31
     },
     {
-      "name": "keyboard 2",
-      "price": "200000",
+      "id": 32,
+      "name": "Iphone 14 Pro Max",
+      "price": "1100000"
+    },
+    {
+      "name": "era ",
+      "price": "123145",
       "id": 33
     },
     {
-      "name": "ram 23",
-      "price": "123",
+      "name": "dareu",
+      "price": "600000",
+      "id": 34
+    },
+    {
+      "name": "test1",
+      "price": "120000",
       "id": 35
+    },
+    {
+      "name": "dareu 630",
+      "price": "700000",
+      "id": 36
+    },
+    {
+      "name": "test 10 ",
+      "price": "500000",
+      "id": 37
     }
   ]
 }

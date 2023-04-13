@@ -17,7 +17,6 @@ export const initialState: ProductState = {
 }
 
 export function productsReducer(state: ProductState = initialState, action: ProductActions): ProductState {
-    console.log("state , ", state)
     switch (action.type) {
         // Loading
         case ProductActionTypes.LOAD_PRODUCTS:

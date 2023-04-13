@@ -11,34 +11,33 @@
       <div class="d-flex justify-content-between align-items-center">
         <mat-form-field appearance="fill">
           <mat-label>Name</mat-label>
-          <input type="text" matInput formControlName="name" maxlength="50"/>
-          <!-- <mat-error *ngIf="f.name.errors">
+          <input type="text" matInput formControlName="name" maxlength="50" />
+          <mat-error *ngIf="f.name.errors">
             <span *ngIf="f.name.errors">
               This field is required
             </span>
-          </mat-error> -->
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Price</mat-label>
-          <input type="text" matInput formControlName="price" maxlength="50"/>
-          <!-- <mat-error *ngIf="f.price.errors">
+          <input type="text" matInput formControlName="price" maxlength="50" />
+          <mat-error *ngIf="f.price.errors">
             <span *ngIf="f.price.errors">
               This field is required
             </span>
-          </mat-error> -->
+          </mat-error>
         </mat-form-field>
       </div>
     </mat-card-content>
 
     <mat-card-actions class="d-flex justify-content-end align-items-center">
-      <!-- [disabled]="(loading$ | async) ||!form.valid" -->
-      <button mat-raised-button color="primary" class="me-2"
+      <button mat-raised-button color="accent" class="me-2" [disabled]="(loading$ | async) || form.invalid"
         (click)="onSubmit()">
-        <mat-icon>save</mat-icon> Save
+        Update
       </button>
       <!-- [disabled]="loading$ | async"  -->
-      <button mat-raised-button color="secondary"(click)="onClose()">
+      <button mat-raised-button color="secondary" (click)="onClose()">
         Cancel
       </button>
     </mat-card-actions>

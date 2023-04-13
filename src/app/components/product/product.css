@@ -7,6 +7,11 @@ table {
     width: 100%;
 }
 
+.mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
 .spinner_container {
     width: 100%;
     display: flex;
@@ -15,7 +20,7 @@ table {
     margin: 0;
     position: absolute;
     top: 45%;
-    left: 50%;
+    left: 49%;
     margin-right: -50%;
     transform: translate(-50%, -50%)
 }

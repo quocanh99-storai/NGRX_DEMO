@@ -5,7 +5,6 @@ import { ProductAddAction, ProductLoadingAction, ProductRemoveAction } from '../
 import * as ProductSelector from 'src/app/state/product/product.selector';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductDialogComponent } from './product-dialog/product-dialog.component';
-import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { ProductEditDialogComponent } from './product-edit-dialog/product-edit-dialog.component';
 
@@ -17,34 +16,37 @@ import { ProductEditDialogComponent } from './product-edit-dialog/product-edit-d
 
 export class ProductComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+
   // Observable
-  product$ = this._store.select(ProductSelector.selectProducts)
-  loading$ = this._store.select(ProductSelector.selectLoading)
-  loaded$ = this._store.select(ProductSelector.selectLoaded)
-  error$ = this._store.select(ProductSelector.selectError)
+  public product$ = this._store.select(ProductSelector.selectProducts)
+  public loading$ = this._store.select(ProductSelector.selectLoading)
+  public loaded$ = this._store.select(ProductSelector.selectLoaded)
+  public error$ = this._store.select(ProductSelector.selectError)
 
-  displayedColumns: string[] = ['position', 'name', 'price', 'actions'];
-  dataSource = this.product$;
-  resultsLength = 0;
-
-  // removeProduct(id: number) {
-  //   this.store.dispatch(ProductActions.removeProduct({ id }))
-  // }
+  public displayedColumns: string[] = ['position', 'image', 'name', 'price', 'actions'];
+  public dataSource = this.product$;
+  public pageSizeOptions: number[] = [5, 10, 25, 50, 100];
+  public resultsLength: number = 0;
 
   constructor(
     private _store: Store<{ products: ReadonlyArray<Product> }>,
     public dialog: MatDialog
-  ) { }
-
+  ) {
+  }
+  
   ngOnInit(): void {
     this.getProductsList()
+    this.dataSource.subscribe(res => this.resultsLength = res.length);
   }
-
 
   // API
   getProductsList() {
     this._store.dispatch(new ProductLoadingAction());
+  }
+
+  // Events
+  setPageSizeOptions(setPageSizeOptionsInput: string) {
+    this.pageSizeOptions = setPageSizeOptionsInput.split(",").map(str => +str);
   }
 
   // Functions 

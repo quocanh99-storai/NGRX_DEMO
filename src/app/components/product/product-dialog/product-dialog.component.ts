@@ -83,8 +83,6 @@ export class ProductDialogComponent implements OnInit, OnDestroy {
         if (!res) {
           return;
         }
-        console.log('res', res)
-
         this.dialogRef.close(res);
       });
   }

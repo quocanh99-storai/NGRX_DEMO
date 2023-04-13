@@ -1,4 +1,53 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// regular style toast
+@import 'ngx-toastr/toastr';
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+.actionloading {
+    position: relative;
+    display: block;
+    min-height: 10rem;
+
+    &::before {
+        content: "";
+        background-color: rgba(255, 255, 255, 0.8);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 999;
+    }
+
+    &::after {
+        content: "";
+        color: #007bff;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        vertical-align: text-bottom;
+        border: 0.25em solid currentColor;
+        border-right-color: transparent;
+        border-radius: 50%;
+        -webkit-animation: spinner-border 0.75s linear infinite;
+        animation: spinner-border 0.75s linear infinite;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -1.5rem;
+        margin-top: -1.5rem;
+        z-index: 1000;
+    }
+}

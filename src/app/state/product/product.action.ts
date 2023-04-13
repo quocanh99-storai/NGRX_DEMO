@@ -58,12 +58,12 @@ export class ProductAddFailureAction implements Action {
 // ------------------EDIT-------------------- //
 export class ProductEditAction implements Action {
     readonly type = ProductActionTypes.EDIT_PRODUCT;
-    constructor(public payload: Product) { }
+    constructor(public payload: { model: Product }) { }
 }
 
 export class ProductEditSuccessAction implements Action {
     readonly type = ProductActionTypes.EDIT_PRODUCT_SUCCESS;
-    constructor(public payload: Product) { }
+    constructor(public payload: any) { }
 }
 
 // ------------------REMOVE-------------------- //
